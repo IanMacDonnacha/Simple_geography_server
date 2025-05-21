@@ -18,4 +18,16 @@ app.get("/continents", (req, res) => {
   });
 });
 
+const countriesList = [
+  { country: "France", language: "French", id: 1 },
+  { country: "Spain", language: "Spain", id: 2 },
+];
+
+app.get("/countries/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const country = countriesList.find((x) => x.id === id);
+
+  res.send(country);
+});
+
 module.exports = app;
